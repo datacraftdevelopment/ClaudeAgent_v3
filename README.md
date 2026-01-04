@@ -1,18 +1,34 @@
 # Claude Agent v3
 
-A template for building reliable AI agents with persistent memory. Designed for Claude Code, but works with any LLM that can execute Python scripts.
+An alternative to visual workflow builders like n8n, Make, or Zapier — where Claude is the orchestrator.
 
-## The Problem
+## The Idea
 
-LLMs are probabilistic. Business logic is deterministic. When you ask an AI to do multi-step tasks, errors compound:
+Instead of dragging nodes and connecting them in a visual builder, you:
 
-> 90% accuracy per step = 59% success over 5 steps
+1. **Describe what you want** → Claude writes the directive (the SOP)
+2. **Claude builds the tools** → Deterministic Python scripts
+3. **Claude runs it** → Orchestrates the workflow, handles errors, logs results
+4. **Claude remembers** → Persistent memory across sessions
 
-This agent architecture fixes that mismatch by separating concerns and adding memory.
+No clicking through UIs. No manually wiring API connections. You have a conversation, and the automation gets built.
 
-## The Solution
+## Why This Works
 
-### 3-Layer Architecture
+Visual builders are great until:
+- You need custom logic that doesn't fit their nodes
+- You're debugging a 20-step workflow and can't find the broken connection
+- You want to version control your automations
+- You need the workflow to learn from failures
+
+LLMs are great until:
+- They hallucinate API endpoints
+- They compound errors across steps (90% accuracy × 5 steps = 59% success)
+- They forget what worked last time
+
+**This architecture combines both:** Claude handles the orchestration and decision-making. Deterministic scripts handle the actual work. Memory persists what's learned.
+
+## How It Works
 
 ```
 ┌─────────────────────────────────────────────────────┐
