@@ -42,7 +42,7 @@ LLMs are great until:
 │  └── Doing the work (Python scripts in execution/) │
 ├─────────────────────────────────────────────────────┤
 │  Memory Layer                                       │
-│  └── Persistent context (SQLite in memory.db)      │
+│  └── Persistent context (SQLite in db/)            │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -59,7 +59,9 @@ LLMs are great until:
 ```
 ClaudeAgent_v3/
 ├── CLAUDE.md                 # Agent instructions (start here)
-├── memory.db                 # SQLite knowledge graph
+├── db/                       # SQLite databases
+│   ├── memory.db             # Agent knowledge graph (persistent memory)
+│   └── *.db                  # Workflow-specific databases as needed
 ├── context/                  # Reference materials for building directives
 ├── execution/
 │   └── memory_ops.py         # Memory CRUD operations
@@ -214,9 +216,33 @@ OPENAI_API_KEY=sk-...
 DATABASE_URL=...
 ```
 
-### Memory Location
+### Database Location
 
-By default, `memory.db` lives in the project root. The database is portable — copy the folder and memory comes with it.
+All databases live in the `db/` folder:
+
+```
+db/
+├── memory.db           # Agent knowledge graph (always present)
+├── leads.db            # Example: Lead generation data
+├── products.db         # Example: Scraped product catalog
+└── .gitkeep            # Ensures folder exists in git
+```
+
+**Why a dedicated folder?**
+
+- **Agent memory** (`memory.db`) is always there — entities, observations, relations, run history
+- **Workflow data** can be stored locally instead of external services (Google Sheets, Airtable, etc.)
+
+For example, a lead generation workflow might create `db/leads.db` to store prospects, enrichment data, and outreach history. This keeps everything portable — copy the folder and all data comes with it.
+
+**When to use local databases vs. cloud services:**
+
+| Use Local DB | Use Cloud Service |
+|--------------|-------------------|
+| Data stays private | Need to share with team |
+| No API costs | Already paying for service |
+| Simpler debugging | Need real-time collaboration |
+| Full SQL access | Non-technical users need access |
 
 ## Documentation
 

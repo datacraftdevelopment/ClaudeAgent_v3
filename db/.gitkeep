@@ -1,0 +1,4 @@
+# This file ensures the db/ folder exists in git
+# Databases stored here:
+# - memory.db: Agent knowledge graph (persistent memory)
+# - Workflow-specific databases as needed

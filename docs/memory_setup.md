@@ -21,7 +21,7 @@ Additionally, it includes **directive run logging** to track execution history.
 │  CLAUDE.md          │  Agent instructions + memory ops  │
 │  directives/*.md    │  Task-specific SOPs                │
 │  execution/*.py     │  Deterministic Python scripts      │
-│  memory.db          │  SQLite knowledge graph            │
+│  db/memory.db       │  SQLite knowledge graph            │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -80,7 +80,9 @@ Execution history for directives.
 ```
 project/
 ├── CLAUDE.md              # Agent instructions (loads memory ops)
-├── memory.db              # SQLite database (auto-created)
+├── db/
+│   ├── memory.db          # SQLite database (auto-created)
+│   └── *.db               # Workflow-specific databases
 ├── execution/
 │   └── memory_ops.py      # Memory CRUD operations
 ├── directives/
@@ -194,21 +196,21 @@ MCP's knowledge graph uses JSONL for simplicity and streaming. We use SQLite bec
 ### Viewing Raw Data
 
 ```bash
-sqlite3 memory.db ".schema"
-sqlite3 memory.db "SELECT * FROM entities"
-sqlite3 memory.db "SELECT * FROM directive_runs ORDER BY started_at DESC LIMIT 10"
+sqlite3 db/memory.db ".schema"
+sqlite3 db/memory.db "SELECT * FROM entities"
+sqlite3 db/memory.db "SELECT * FROM directive_runs ORDER BY started_at DESC LIMIT 10"
 ```
 
 ### Backup
 
 ```bash
-cp memory.db memory.db.backup
+cp db/memory.db db/memory.db.backup
 ```
 
 ### Reset
 
 ```bash
-rm memory.db
+rm db/memory.db
 python3 execution/memory_ops.py init
 ```
 

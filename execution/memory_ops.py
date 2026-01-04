@@ -29,7 +29,7 @@ from pathlib import Path
 from typing import Optional, List, Dict, Any
 
 # Database path relative to this script's parent directory
-DB_PATH = Path(__file__).parent.parent / "memory.db"
+DB_PATH = Path(__file__).parent.parent / "db" / "memory.db"
 
 
 class MemoryDB:

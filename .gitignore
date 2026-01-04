@@ -13,8 +13,8 @@ __pycache__/
 venv/
 .venv/
 
-# Memory database (optional - uncomment to exclude)
-# memory.db
+# Databases (optional - uncomment to exclude)
+# db/*.db
 
 # Credentials
 credentials.json

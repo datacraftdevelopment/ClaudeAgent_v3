@@ -26,7 +26,7 @@ python3 execution/memory_ops.py read-graph
 - `directives/` - SOPs and workflow definitions (the instruction set)
 - `execution/` - Python scripts (the deterministic tools)
 - `context/` - Reference materials for building new directives
-- `memory.db` - Persistent knowledge graph (SQLite)
+- `db/` - SQLite databases (memory.db + workflow-specific databases)
 - `.tmp/` - Temporary files (never commit, always regenerated)
 
 ---
@@ -58,7 +58,7 @@ python3 execution/memory_ops.py read-graph
 
 ## Memory System
 
-This agent has persistent memory via SQLite (`memory.db`). The memory system tracks:
+This agent has persistent memory via SQLite (`db/memory.db`). The memory system tracks:
 
 - **Entities**: People, projects, APIs, tools, concepts
 - **Observations**: Atomic facts about entities
@@ -378,7 +378,7 @@ Directives are living documents. When you discover API constraints, better appro
 
 **Directory structure:**
 - `CLAUDE.md` - Agent instructions (this file)
-- `memory.db` - SQLite knowledge graph
+- `db/` - SQLite databases (memory + workflow data)
 - `context/` - Reference materials for building directives
 - `directives/` - SOPs in Markdown
 - `execution/` - Python scripts
