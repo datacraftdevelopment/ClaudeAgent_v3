@@ -221,7 +221,7 @@ Anthropic's [MCP memory server](https://github.com/modelcontextprotocol/servers/
 
 ## Credits
 
-The 3-layer architecture (directives → orchestration → execution) is based on the workflow from [this video by Dave Ebbelaar](https://www.youtube.com/watch?v=MxyRjL7NG18). The memory system extends this pattern with persistent context using Anthropic's knowledge graph model.
+The 3-layer architecture (directives → orchestration → execution) is based on [Agentic Workflows: Beginner to Pro](https://www.youtube.com/watch?v=MxyRjL7NG18) by Nick Saraev. The memory system extends this pattern with persistent context using Anthropic's knowledge graph model.
 
 ## License
 
