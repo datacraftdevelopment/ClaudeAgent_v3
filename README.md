@@ -219,6 +219,10 @@ Anthropic's [MCP memory server](https://github.com/modelcontextprotocol/servers/
 - **Inspectable** — Query with standard SQL tools
 - **Fits the execution layer** — It's just another Python script
 
+## Credits
+
+The 3-layer architecture (directives → orchestration → execution) is based on the workflow from [this video by Dave Ebbelaar](https://www.youtube.com/watch?v=MxyRjL7NG18). The memory system extends this pattern with persistent context using Anthropic's knowledge graph model.
+
 ## License
 
 MIT — Use it however you want.
