@@ -44,6 +44,7 @@ This agent architecture fixes that mismatch by separating concerns and adding me
 ClaudeAgent_v3/
 ├── CLAUDE.md                 # Agent instructions (start here)
 ├── memory.db                 # SQLite knowledge graph
+├── context/                  # Reference materials for building directives
 ├── execution/
 │   └── memory_ops.py         # Memory CRUD operations
 ├── directives/

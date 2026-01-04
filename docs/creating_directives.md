@@ -67,6 +67,23 @@ The more context, the better the directive:
 | **Constraints** | "Must run in under 5 minutes" |
 | **Preferences** | "Output to Google Sheets, not local files" |
 
+### The `context/` Folder
+
+Drop reference materials into `context/` before starting a conversation:
+
+```
+context/
+├── sample_input.pdf          # Example of what you'll process
+├── expected_output.md        # What the result should look like
+├── api_docs.md               # Relevant API documentation
+└── previous_attempt.py       # Code you've tried before
+```
+
+Then tell Claude:
+> "Check the context folder. I've added samples of the input format and what I want the output to look like."
+
+Claude will read these files and use them to build a better directive. This is faster than pasting everything into the chat.
+
 ## What Claude Creates
 
 ### Directive (`directives/*.md`)
