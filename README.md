@@ -221,9 +221,32 @@ Anthropic's [MCP memory server](https://github.com/modelcontextprotocol/servers/
 
 ## Credits
 
-The 3-layer architecture (directives → orchestration → execution) is based on [Agentic Workflows: Beginner to Pro](https://www.youtube.com/watch?v=MxyRjL7NG18) by Nick Saraev. His course also covers webhooks for triggering workflows externally — not included in this base template but worth exploring for production use.
+The 3-layer architecture (directives → orchestration → execution) is based on [Agentic Workflows: Beginner to Pro](https://www.youtube.com/watch?v=MxyRjL7NG18) by Nick Saraev.
 
-The memory system extends this pattern with persistent context using Anthropic's knowledge graph model.
+**What's from Nick's original:**
+- The 3-layer architecture concept
+- Self-annealing loop (fix → update tool → update directive)
+- File organization (.tmp/, execution/, directives/)
+- Core operating principles
+
+**What Nick's course covers that's not here:**
+- Cloud webhooks via Modal for event-driven execution
+- Slack integration for real-time activity streaming
+- Google Sheets/Slides as deliverables
+
+**What this template adds:**
+- SQLite memory system (entities, observations, relations, run history)
+- RFC 2119 keywords (MUST/SHOULD/MAY) for directive writing
+- Script reliability levels (STABLE/BETA/EXPERIMENTAL)
+- Structured error returns with classification
+- Cost controls and escalation rules
+- Autonomy guidelines (when to ask vs proceed)
+- Anti-patterns section
+- Validation checkpoints
+- context/ folder for reference materials
+- Comprehensive directive template with Learnings section
+
+The memory system uses Anthropic's knowledge graph model adapted for local SQLite.
 
 ## License
 
