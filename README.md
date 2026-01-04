@@ -73,37 +73,37 @@ claude
 
 Claude will automatically read `CLAUDE.md` and understand the architecture.
 
-### 3. Add Your Directives
+### 3. Create Directives Through Conversation
 
-Create task-specific SOPs in `directives/`:
+You don't write directives manually. You have a conversation with Claude about what you want:
 
-```markdown
-# directives/scrape_website.md
+```
+You:    "I want to scrape product data from e-commerce sites.
+         Here's an example of the output format I need..."
 
-## Goal
-Extract product data from e-commerce sites.
+Claude: Creates directives/scrape_products.md
+        Creates execution/product_scraper.py
+        Tests that it works
 
-## Inputs
-- URL of product listing page
-- Max pages to scrape
+You:    "Try it on this URL"
 
-## Execution
-1. Run `execution/scraper.py` with URL
-2. Output saved to `.tmp/products.json`
-
-## Edge Cases
-- Rate limited: Wait 60s, retry with smaller batch
-- Pagination: Follow "next" links up to max pages
+Claude: Runs the directive
+        Logs results to memory
+        Updates directive with edge cases discovered
 ```
 
-### 4. Add Your Execution Scripts
+**What you provide:**
+- Your goal ("I want to automate X...")
+- Context (paste examples, files, past work)
+- Edge cases you know about
+- Preferences for output format
 
-Create deterministic tools in `execution/`:
+**What Claude creates:**
+- Directive in `directives/` (the SOP)
+- Execution scripts in `execution/` (the tools)
+- Memory entries for learnings
 
-```python
-# execution/scraper.py
-# Your reliable, testable Python code
-```
+See **[docs/creating_directives.md](docs/creating_directives.md)** for the full workflow.
 
 ## Memory System
 
@@ -204,6 +204,7 @@ By default, `memory.db` lives in the project root. The database is portable — 
 ## Documentation
 
 - **[CLAUDE.md](CLAUDE.md)** — Agent instructions (what Claude reads)
+- **[docs/creating_directives.md](docs/creating_directives.md)** — How to create new directives through conversation
 - **[docs/memory_setup.md](docs/memory_setup.md)** — Technical details on the memory system
 - **[directives/memory_management.md](directives/memory_management.md)** — SOP for using memory
 
